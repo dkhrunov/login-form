@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма для авторизации</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="form">
+        <label class="tab active" title="Вкладка 1"><i class="fa fa-user"></i> Авторизации</label>
+        <label class="tab" title="Вкладка 2"><i class="fa fa-user-plus"></i> Регистрация</label>
+        <form class="tab-form active">
+            <div class="inputBox">
+                <label class="labelText">Введите E-mail:</label>
+                <input class="input" type="email">
+            </div>
+            <div class="inputBox">
+                <label class="labelText">Введите пароль:</label>
+                <input class="input" type="password">
+            </div>
+            <a href="#" class="button">Войти</a>
+            <ul class="social">
+                <li><a href="#"><div><i class="fa fa-facebook"></i></div></a></li>
+                <li><a href="#"><div><i class="fa fa-twitter"></i></div></a></li>
+                <li><a href="#"><div><i class="fa fa-instagram"></i></div></a></li>
+                <li><a href="#"><div><i class="fa fa-vk"></i></div></a></li>
+                <li><a href="#"><div><i class="fa fa-youtube"></i></div></a></li>
+            </ul>
+            <a href="#">Я забыл свой E-mail или пароль</a>
+        </form>
+
+        <form class="tab-form">
+            <div class="inputBox">
+                <label class="labelText">Введите E-mail:</label>
+                <input class="input" type="email">
+            </div>
+            <div class="inputBox">
+                <label class="labelText">Введите логин:</label>
+                <input class="input" type="text">
+            </div>
+            <div class="inputBox">
+                <label class="labelText">Введите пароль:</label>
+                <input class="input" type="password">
+            </div>
+            <div class="inputBox">
+                <label class="labelText">Повторите пароль:</label>
+                <input class="input" type="password">
+            </div>
+            <a href="#" class="button">Регистрация</a>
+
+            <div class="recover">
+                <input type="checkbox" id="ckbox">
+                <label for="ckbox">Ознакомлен(-а) и принимаю <a href="#">условия регистрации</a></label>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
