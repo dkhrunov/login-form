@@ -144,6 +144,23 @@ a.button:hover::after {
     transition-delay: .2s;
 }
 
+/* Анимация кнопки пульс при нажатии */
+.pulse {
+    background-color: aqua;
+    border-radius: 50%;
+    position: absolute;
+    animation: pulse 0.7s ease-out; /* Создаем плавную анимацию в 0,7 секунд  */
+    transform: scale(0); /* Обратно уменьшаем круг */
+}
+
+@keyframes pulse { /* Создание собственной анимации */
+    to {
+        transform: scale(2); /* Увеличиваем в 2 раза */
+        background-color: #fff; /* Меняем цвет на белый */
+        opacity: 0; /* Делаем прозрачность нулевую */
+    }
+}
+
 /* Иконки соц сетей*/
 .social {
     display: flex;

@@ -19,4 +19,34 @@ $(document).ready( function() {
       $(this).parent().removeClass("focus");
     }
   });
+
+  // Анимация при клике на кнопку - пульсация
+  // находим кнопки в документе
+  let buttons = document.getElementsByClassName('button'),
+      // берем метод массива forEach
+      forEach = Array.prototype.forEach;
+
+  // на каждую кнопку вещаем обработчик событий клика и выполняем функцию addElement 
+  forEach.call(buttons, function(b) {
+    b.addEventListener('click', addElement);
+  });
+
+  // функция выполняющая при клике
+  function addElement() {
+    // создаем div элемент
+    let addDiv = document.createElement('div'),
+        // выбираем макс знач из ширины и высоты кнопки
+        mValue = Math.max(this.clientWidth, this.clientHeight),
+        // сокращения
+        sDiv   = addDiv.style,
+        px     = 'px';
+
+    // для блока блока div ставим стили высоты и ширины = макс знач
+    sDiv.width = sDiv.height = mValue + px;
+
+    // добавляем класс блоку div
+    addDiv.classList.add('pulse');
+    // добавляем в документ блок div
+    this.appendChild(addDiv);
+  }
 });
