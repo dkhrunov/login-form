@@ -20,6 +20,35 @@ $(document).ready( function() {
     }
   });
 
+  // Анимация по клику на кнопку
+  $(".button").on("click", function(e) {
+    // выбираем макс знач из ширины и высоты кнопки
+    let mValue = Math.max(this.clientWidth, this.clientHeight);
+    // получаем объект, в котором храниться вся информация о кнопке
+    let rect   = this.getBoundingClientRect();
+
+    // позицианирование анимации на место клика относительно оси X и Y
+    let divL   = e.clientX - rect.left - (mValue / 2) + 'px',
+        divT   = e.clientY - rect.top - (mValue / 2) + 'px';
+
+    // добавляем элемент в докуммент с задаными параметрами
+    let div = $('<div>', {    class  : 'pulse',
+                    css: {
+                      width  : mValue + 'px',
+                      height : mValue + 'px',
+                      left   : divL,
+                      top    : divT
+                    }
+                }
+    ).appendTo(".button");
+    
+    // удаляем элемент после анимации
+    setTimeout(function() {
+      div.remove();
+    }, 700);
+  });
+
+/*
   // Анимация при клике на кнопку - пульсация
   // находим кнопки в документе
   let buttons = document.getElementsByClassName('button'),
@@ -55,4 +84,5 @@ $(document).ready( function() {
     // добавляем в документ блок div
     this.appendChild(addDiv);
   }
+*/
 });
