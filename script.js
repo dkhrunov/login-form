@@ -4,6 +4,7 @@ $(document).ready(function () {
 		if ($(this).hasClass("active")) { //detection for current tab
             return;
         } else {
+			$(".tab").hide().fadeIn(1000);
 			// при смене вкладки поворачиваем форму
 			$('.form').addClass('rotate');
 			// полный поворот происходит за 0,8s,
