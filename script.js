@@ -1,14 +1,31 @@
 $(document).ready(function () {
 
 	$(".form").on("click", ".tab", function () {
-		// Удаляем все классы active в .form
-		$(".form").find(".active").removeClass("active");
-		// Добаляем класс active на кликнутый элемент
-		$(this).addClass("active");
-		// Добавляем класс active на тот .tab-form котороый соответсвует
-		// индексу  кликнутого таба (.tab[0] == .tab-form[0] и т.д.)
-		$(".tab-form").eq($(this).index()).addClass("active");
+		if ($(this).hasClass("active")) { //detection for current tab
+            return;
+        } else {
+			// при смене вкладки поворачиваем форму
+			$('.form').addClass('rotate');
+			// полный поворот происходит за 0,8s,
+			// а мы отменяем анимацию через 0,2S делая анимацию плавнее
+			setTimeout(function () {
+				$('.form').removeClass('rotate');
+			}, 200);
+
+			// скрываем все формы
+			$(".form > .tab-form").hide();
+			// Удаляем все классы active в .form
+			$(".form").find(".active").removeClass("active");
+			// Добаляем класс active на кликнутый элемент
+			$(this).addClass("active");
+			// Добавляем класс active на тот .tab-form котороый соответсвует
+			// индексу  кликнутого таба (.tab[0] == .tab-form[0] и т.д.)
+			$(".tab-form").eq($(this).index()).addClass("active").fadeIn(1000);
+		}
 	});
+
+	// симулируем клик по первому табу, запуская анимацию при старте страницы
+	$(".tab:first").trigger('click');
 
 	// Анимация плавающего текста
 	$(".input").focus(function () {

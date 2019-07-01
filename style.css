@@ -20,7 +20,14 @@ body {
 
 .form {
     background-color: rgba(255, 255, 255, 0.2);
-    padding: 10px;
+	padding: 10px;
+	/* Анимация поворота формы */
+	transition: transform 0.8s linear;
+}
+
+/* класс поворота формы */
+.rotate {
+	transform: rotate3d(0, 1, 0, 360deg);
 }
 
 .form a {
