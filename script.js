@@ -32,17 +32,23 @@ $(document).ready( function() {
   });
 
   // функция выполняющая при клике
-  function addElement() {
+  function addElement(e) {
     // создаем div элемент
     let addDiv = document.createElement('div'),
         // выбираем макс знач из ширины и высоты кнопки
         mValue = Math.max(this.clientWidth, this.clientHeight),
+        // получаем объект, в котором храниться вся информация о кнопке
+        rect   = this.getBoundingClientRect(),
         // сокращения
         sDiv   = addDiv.style,
         px     = 'px';
 
     // для блока блока div ставим стили высоты и ширины = макс знач
     sDiv.width = sDiv.height = mValue + px;
+    // смещаем блок div на место клика относительно оси X
+    sDiv.left  = e.clientX - rect.left - (mValue / 2) + px;
+    // смещаем блок div на место клика относительно оси Y
+    sDiv.top   = e.clientY - rect.top - (mValue / 2) + px;
 
     // добавляем класс блоку div
     addDiv.classList.add('pulse');
