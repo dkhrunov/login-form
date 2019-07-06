@@ -16,10 +16,28 @@
 
     document.querySelector('body').appendChild(canvas);
 
-    window.onresize = function(){
-        w = canvas.width = innerWidth,
-        h = canvas.height = innerHeight;        
-    }
+    function createParticles() {
+		for (let i = 0; i < properties.particleCount; i++) {
+			particles.push(new Particle);
+		}
+	}
+
+	function checkScreenSize() {
+		if (innerWidth >= '1020' || innerHeight >= '1360') {
+			properties.particleCount = 160;
+			particles.length = 0;
+		} else if (innerWidth < '400' || innerHeight < '700') {
+			properties.particleCount = 60;
+			particles.length = 0;
+		}
+	}
+
+	window.onresize = function() {
+		checkScreenSize();
+		createParticles();
+		w = canvas.width  = innerWidth;
+		h = canvas.height = innerHeight;
+	};
 
     class Particle{
         constructor(){
@@ -27,7 +45,6 @@
             this.y = Math.random()*h;
             this.velocityX = Math.random()*(properties.particleMaxVelocity*2)-properties.particleMaxVelocity;
             this.velocityY = Math.random()*(properties.particleMaxVelocity*2)-properties.particleMaxVelocity;
-            this.life = Math.random()*properties.particleLife*60;
         }
         position(){
             this.x + this.velocityX > w && this.velocityX > 0 || this.x + this.velocityX < 0 && this.velocityX < 0? this.velocityX*=-1 : this.velocityX;
@@ -86,13 +103,12 @@
         requestAnimationFrame(loop);
     }
 
-    function init(){
-        for(var i = 0 ; i < properties.particleCount ; i++){
-            particles.push(new Particle);
-        }
-        loop();
-    }
+	function init() {
+		checkScreenSize();
+		createParticles();
+		loop();
+	}
 
-    init();
+	init();
 
 }())
